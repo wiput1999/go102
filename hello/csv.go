@@ -7,7 +7,7 @@ import (
 	"os"
 )
 
-func main() {
+func ReadCSV() {
 	f, _ := os.Open("oscar_age_male.csv")
 	r := csv.NewReader(f)
 

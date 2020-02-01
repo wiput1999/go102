@@ -4,6 +4,7 @@ import (
 	"strconv"
 
 	"github.com/gin-gonic/gin"
+	"github.com/wiput1999/go102/hello/fizzbuzz"
 )
 
 type response struct {
@@ -15,11 +16,11 @@ func main() {
 	r := gin.Default()
 
 	r.GET("/fizzbuzz/:number", func(c *gin.Context) {
-		_, err := strconv.Atoi(c.Param("number"))
+		number, err := strconv.Atoi(c.Param("number"))
 
 		if err == nil {
 			c.JSON(200, response{
-				Message: c.Param("number"),
+				Message: fizzbuzz.FizzBuzz(number),
 				Number:  c.Param("number"),
 			})
 		}

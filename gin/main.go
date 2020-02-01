@@ -6,14 +6,20 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+type response struct {
+	Number  string `json:"number"`
+	Message string `json:"message"`
+}
+
 func main() {
 	r := gin.Default()
 	r.GET("/fizzbuzz/:number", func(c *gin.Context) {
-		number, err := strconv.Atoi(c.Param("number"))
+		_, err := strconv.Atoi(c.Param("number"))
 
 		if err == nil {
-			c.JSON(200, gin.H{
-				"message": number,
+			c.JSON(200, response{
+				Message: c.Param("number"),
+				Number:  c.Param("number"),
 			})
 		}
 	})
